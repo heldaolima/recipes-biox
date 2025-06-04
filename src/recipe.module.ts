@@ -4,6 +4,10 @@ import { RecipeController } from './presentation/http/controllers/recipe-control
 
 @Module({
   controllers: [RecipeController],
-  providers: [RecipeRepositoryInMemory],
+  providers: [{
+    provide: 'RECIPE_REPOSITORY',
+    useClass: RecipeRepositoryInMemory,
+  }],
+  exports: ['RECIPE_REPOSITORY'],
 })
 export class RecipeModule { }
